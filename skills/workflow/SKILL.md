@@ -61,4 +61,4 @@ FILES: <paths touched, if any>
 
 ## Templates
 
-`templates/intent.md`, `decisions.md`, `backlog.md`, `brief.md`, `research.md`, `plan.md`, `progress.md`. Copy, fill, delete unused sections.
+`templates/AGENTS.md`, `architecture.md` (project scaffold); `intent.md`, `decisions.md`, `backlog.md`, `brief.md`, `research.md`, `plan.md`, `progress.md`. Copy, fill, delete unused sections.

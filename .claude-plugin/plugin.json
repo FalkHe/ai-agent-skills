@@ -1,0 +1,21 @@
+{
+  "name": "fhit",
+  "version": "0.1.0",
+  "displayName": "fhit \u2014 intent \u2192 sprint agent stack",
+  "description": "Intent \u2192 decisions \u2192 backlog \u2192 autonomous sprints. Agents: architect, ux/ui-designer, backend-php, backend-python, frontend, qa, verifier.",
+  "author": {
+    "name": "Falk Hermann",
+    "email": "falk@hermann.pm"
+  },
+  "repository": "https://github.com/FalkHe/ai-agent-skills",
+  "license": "MIT",
+  "keywords": [
+    "workflow",
+    "sprint",
+    "agents",
+    "laravel",
+    "fastapi",
+    "vue",
+    "react"
+  ]
+}

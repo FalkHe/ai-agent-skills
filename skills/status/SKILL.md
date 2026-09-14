@@ -14,9 +14,9 @@ Read only frontmatter + tables; never research or plan files.
 **Sprint** (if given): brief stage, `progress.md` table, issues, verify rounds, branch + PR state (`gh pr view` / `glab mr view` if branch exists).
 
 **Resume hint**, one line, derived from state:
-- backlog not approved → `/backlog III`
-- rows `running` without a live agent → `/sprint III NN` re-spawns them (idempotent: done rows are skipped)
-- PR open, verify pending → `/sprint III NN` continues at step 6
-- proposals pending → `/refine III`
+- backlog not approved → `/fhit:backlog III`
+- rows `running` without a live agent → `/fhit:sprint III NN` re-spawns them (idempotent: done rows are skipped)
+- PR open, verify pending → `/fhit:sprint III NN` continues at step 6
+- proposals pending → `/fhit:refine III`
 
 Output ≤25 lines.

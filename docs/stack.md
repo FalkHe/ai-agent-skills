@@ -6,14 +6,15 @@ Derived from `workflow.md`. Agreed 2026-09-14. Files: `agents/*.md`, `skills/*/S
 
 | Skill | Phase | Does |
 |---|---|---|
-| `/intent <text>` | 1 | Interactive. Creates `docs/intents/NNN-<slug>/`, captures verbatim, research via `architect`, roasts with the human, records decisions → human approves |
-| `/backlog <intent>` | 1 | Slices approved decisions into sprint outcomes, drafts briefs → human approves (last gate before PR) |
-| `/issue <#id>` | 1–2 | Same flow, human in the loop via issue comments (proposals → `approve` / `Dn:` replies). Then backlog + sprints |
-| `/refine <intent>` | 1/2 | Add/change decisions (+ attachments), re-check backlog for conflicts |
-| `/sprint <intent> [NN]` | 2 | Autonomous, no questions: research → plan → implement ‖ qa → gates → ship → verify. No NN = all open sprints |
-| `/status <intent \| sprint>` | – | Reads state (`backlog.md`, `progress.md`); resume point after crash |
+| `/fhit:intent <text>` | 1 | Interactive. Creates `docs/intents/NNN-<slug>/`, captures verbatim, research via `architect`, roasts with the human, records decisions → human approves |
+| `/fhit:backlog <intent>` | 1 | Slices approved decisions into sprint outcomes, drafts briefs → human approves (last gate before PR) |
+| `/fhit:issue <#id>` | 1–2 | Same flow, human in the loop via issue comments (proposals → `approve` / `Dn:` replies). Then backlog + sprints |
+| `/fhit:refine <intent>` | 1/2 | Add/change decisions (+ attachments), re-check backlog for conflicts |
+| `/fhit:sprint <intent> [NN]` | 2 | Autonomous, no questions: research → plan → implement ‖ qa → gates → ship → verify. No NN = all open sprints |
+| `/fhit:init` | 0 | Scaffolds `AGENTS.md`, `CLAUDE.md` import, `docs/architecture.md`, `docs/intents/` |
+| `/fhit:status <intent \| sprint>` | – | Reads state (`backlog.md`, `progress.md`); resume point after crash |
 
-Plan and Ship stay in the main agent (`/sprint`): plan needs full sprint context, ship is deterministic.
+Plan and Ship stay in the main agent (`/fhit:sprint`): plan needs full sprint context, ship is deterministic.
 
 ## Agents (sub-agents, fresh context, one profession each)
 
@@ -35,7 +36,7 @@ Main agent routes work items by type. Each specialist researches its own area in
 | Skill | Content | Preloaded into |
 |---|---|---|
 | `workflow` | layout, frontmatter, caps, handoff format, templates | all agents, all command skills |
-| `git-flow` | branches, conventional commits, `gh` / `glab` PR + review commands | `/sprint`, `verifier` |
+| `git-flow` | branches, conventional commits, `gh` / `glab` PR + review commands | `/fhit:sprint`, `verifier` |
 | `laravel` | conventions, testing, best practices | `backend-php` |
 | `fastapi`, `typer` | same | `backend-python` |
 | `react-next`, `vue` | same | `frontend` |

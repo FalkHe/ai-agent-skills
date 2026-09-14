@@ -34,3 +34,15 @@ Prefered services/tools
 - Redis
 - gh CLI (GitHub)
 - glab CLI (GitLab)
+
+## Install (Claude Code plugin `fhit`)
+
+```
+/plugin marketplace add FalkHe/ai-agent-skills
+/plugin install fhit@fhit --scope project     # writes .claude/settings.json → teammates get it on clone
+/fhit:init                                     # scaffold AGENTS.md, docs/architecture.md, docs/intents/
+```
+User-wide instead: drop `--scope project`. Update: `/plugin update fhit@fhit` (or `/plugin marketplace update fhit`).
+Dev: `claude --plugin-dir /path/to/ai-agent-skills`.
+
+Commands: `/fhit:intent`, `/fhit:backlog`, `/fhit:sprint`, `/fhit:refine`, `/fhit:status`, `/fhit:issue`. Docs: `docs/workflow.md`, `docs/stack.md`.

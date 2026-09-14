@@ -26,7 +26,7 @@ Stop when the human says so or no open product-visible question remains.
 Show `decisions.md` complete. Human edits / refines until they say approved → `stage: approved`. Not before.
 
 ## 5. Hand-off
-Report ≤5 lines: intent path, Dn count, next command: `/backlog III`.
+Report ≤5 lines: intent path, Dn count, next command: `/fhit:backlog III`.
 
 ## Rules
 - Human layer files ≤50 lines. Over → you are recording conclusions, not decisions. Move them to `research.md`.

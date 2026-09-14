@@ -53,19 +53,19 @@ No `version` field — git has it.
 
 ## Phase 1: Intent (human in the loop)
 
-Trigger: prompt (`/intent`, chat) or issue (`/issue`, same gates via issue comments: `approve`, `Dn: <answer>`, `stop`).
+Trigger: prompt (`/fhit:intent`, chat) or issue (`/fhit:issue`, same gates via issue comments: `approve`, `Dn: <answer>`, `stop`).
 
 1. **Capture** input verbatim → `intent.md`.
 2. **Research** options + codebase → `research.md`. Present ≤20 lines: options, trade-offs, recommendation.
 3. **Roast** — a conversation with the human. Agent asks product-visible questions; designers/architect only supply proposals. Each answer → one line in `decisions.md` (+ attachment).
 4. **Approve decisions**: human reviews and refines `decisions.md` → `stage: approved`.
-5. **Backlog** (`/backlog`): propose sprint outcomes + draft briefs → human judges order, cuts, size, gaps → approved. Last gate before the PR.
+5. **Backlog** (`/fhit:backlog`): propose sprint outcomes + draft briefs → human judges order, cuts, size, gaps → approved. Last gate before the PR.
 
 Human reads: intent, research summary, decisions, backlog.
 
 ## Phase 2: Sprint (autonomous)
 
-Pre-condition: backlog approved. Zero open human decisions. `/sprint III` runs all open sprints in order; no questions.
+Pre-condition: backlog approved. Zero open human decisions. `/fhit:sprint III` runs all open sprints in order; no questions.
 
 | Stage | Actor | Output |
 |---|---|---|

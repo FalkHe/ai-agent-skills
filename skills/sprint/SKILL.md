@@ -12,7 +12,7 @@ You are the sprint lead. You delegate all reading of code and all implementation
 Paths: intent `docs/intents/<III>-*/`, sprint `<intent>/sprints/<NN>-<slug>/` (create from the backlog line if missing).
 
 ## 0. Select
-No NN → every `open` backlog line whose dependencies are `done`, in order, one full run each. `backlog.md` must be `stage: approved`; missing brief → run `/backlog` first.
+No NN → every `open` backlog line whose dependencies are `done`, in order, one full run each. `backlog.md` must be `stage: approved`; missing brief → run `/fhit:backlog` first.
 Backlog line → `running`. Refresh brief `Assumptions` if `decisions.md` changed since (`updated:`).
 Never ask the human. Decide, record under `progress.md → Issues`, continue.
 

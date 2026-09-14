@@ -8,7 +8,7 @@ argument-hint: <intent number> [what to change]
 # Refine intent $ARGUMENTS
 
 1. Read `decisions.md`, `backlog.md`, and `progress.md` of any `running` sprint. Nothing else.
-2. Discuss the change as in `/intent` step 3 (one question at a time; designers/architect for attachments).
+2. Discuss the change as in `/fhit:intent` step 3 (one question at a time; designers/architect for attachments).
 3. Record:
    - New → next `Dn`.
    - Changed → edit the `Dn` line in place, append `(rev YYYY-MM-DD, was: <old>)`. Never renumber.

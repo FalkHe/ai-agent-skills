@@ -1,0 +1,15 @@
+{
+  "name": "fhit",
+  "owner": {
+    "name": "Falk Hermann",
+    "email": "falk@hermann.pm"
+  },
+  "plugins": [
+    {
+      "name": "fhit",
+      "source": "./",
+      "description": "Intent \u2192 sprint development workflow with specialist agents"
+    }
+  ],
+  "description": "fhit: intent \u2192 sprint development workflow with specialist agents"
+}

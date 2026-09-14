@@ -7,7 +7,7 @@ argument-hint: <issue number>
 
 # Issue $ARGUMENTS
 
-Same flow as `/intent` → `/backlog` → `/sprint`, but the conversation is the issue thread. Platform commands per `git-flow`.
+Same flow as `/fhit:intent` → `/fhit:backlog` → `/fhit:sprint`, but the conversation is the issue thread. Platform commands per `git-flow`.
 
 ## 1. Capture
 `gh issue view $ARGUMENTS --json title,body,comments` / `glab issue view`. `intent.md` = title + body verbatim, author = issue author, `source: <issue url>`.
@@ -23,10 +23,10 @@ Comment on the issue (≤30 lines): proposals as a numbered list, each "reply `D
 Poll comments (`gh issue view --json comments`) every 5 min, up to 24 h. Apply `Dn:` replies to `decisions.md`, re-post changed lines. On `approve` → `stage: approved`, `approved-by: <commenter>`. `stop` or issue closed → halt. Timeout → comment, halt.
 
 ## 5. Backlog
-Run `/backlog III`; post the backlog as a comment, wait for `approve` as in 4.
+Run `/fhit:backlog III`; post the backlog as a comment, wait for `approve` as in 4.
 
 ## 6. Sprints
-`/sprint III` — all open sprints. Before each sprint re-read the issue; `stop`/closed → halt.
+`/fhit:sprint III` — all open sprints. Before each sprint re-read the issue; `stop`/closed → halt.
 
 ## 7. Report
 Final comment: PR links, verdicts, failed items.

@@ -43,6 +43,14 @@ Prefered services/tools
 /fhit:init                                     # scaffold AGENTS.md, docs/architecture.md, docs/intents/
 ```
 User-wide instead: drop `--scope project`. Update: `/plugin update fhit@fhit` (or `/plugin marketplace update fhit`).
-Dev: `claude --plugin-dir /path/to/ai-agent-skills`.
+Dev: `claude --plugin-dir /path/to/ai-agent-skills/plugins/fhit`.
 
 Commands: `/fhit:intent`, `/fhit:backlog`, `/fhit:sprint`, `/fhit:refine`, `/fhit:status`, `/fhit:issue`. Docs: `docs/workflow.md`, `docs/stack.md`.
+
+## Repository layout
+
+```
+.claude-plugin/marketplace.json   marketplace index → ./plugins/<name>
+plugins/fhit/                     the shipped plugin: .claude-plugin/plugin.json, agents/, skills/
+docs/                             design notes, not shipped
+```

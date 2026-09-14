@@ -1,6 +1,6 @@
 # Agent Stack
 
-Derived from `workflow.md`. Agreed 2026-09-14. Files: `agents/*.md`, `skills/*/SKILL.md`.
+Derived from `workflow.md`. Agreed 2026-09-14. Files: `plugins/fhit/agents/*.md`, `plugins/fhit/skills/*/SKILL.md`.
 
 ## Command skills (human-invoked, `disable-model-invocation: true`, run in main context)
 

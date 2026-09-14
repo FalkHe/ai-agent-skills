@@ -7,7 +7,7 @@
   "plugins": [
     {
       "name": "fhit",
-      "source": "./",
+      "source": "./plugins/fhit",
       "description": "Intent \u2192 sprint development workflow with specialist agents"
     }
   ],

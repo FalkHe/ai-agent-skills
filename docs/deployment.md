@@ -24,7 +24,7 @@ Common denominator: **`.agents/skills/<name>/SKILL.md`** is read by Codex, Gemin
 
 ## Decision (2026-09-14)
 
-Plugin `fhit`, marketplace in this repo (`.claude-plugin/marketplace.json`, source `./`). Install per project with `--scope project` → `.claude/settings.json` carries `"fhit@fhit": true`; Claude Code fetches the plugin, nothing else enters the project repo. Update: `/plugin update fhit@fhit`; `version` in plugin.json is the update gate → bump it (and tag) per release. `/fhit:init` scaffolds `AGENTS.md`, `docs/architecture.md`, `docs/intents/`.
+Plugin `fhit` in `plugins/fhit/` (only this dir is shipped); marketplace in this repo (`.claude-plugin/marketplace.json`, source `./plugins/fhit`) — same layout as `anthropics/claude-plugins-official`. Install per project with `--scope project` → `.claude/settings.json` carries `"fhit@fhit": true`; Claude Code fetches the plugin, nothing else enters the project repo. Update: `/plugin update fhit@fhit`; `version` in plugin.json is the update gate → bump it (and tag) per release. `/fhit:init` scaffolds `AGENTS.md`, `docs/architecture.md`, `docs/intents/`.
 
 ## Options considered
 

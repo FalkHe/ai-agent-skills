@@ -47,6 +47,15 @@ Dev: `claude --plugin-dir /path/to/ai-agent-skills/plugins/fhit`.
 
 Commands: `/fhit:intent`, `/fhit:backlog`, `/fhit:sprint`, `/fhit:refine`, `/fhit:status`, `/fhit:issue`. Docs: `docs/workflow.md`, `docs/stack.md`.
 
+### Recommended MCP servers
+
+| Server | Used for | Without it |
+|---|---|---|
+| context7 | current docs for every framework API, checked against the installed version | agents fall back to installed source, then official docs via web search |
+| playwright | browser acceptance tests and visual verification of rendered UI | no live browser check; UI criteria are judged from code only |
+
+Any install form works (`claude mcp add …` or as a plugin) — the agents address them by keyword, not by tool name.
+
 ## Repository layout
 
 ```

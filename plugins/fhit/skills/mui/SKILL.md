@@ -6,6 +6,7 @@ user-invocable: false
 
 # MUI
 
+- Check the installed MUI major first (`docs-lookup`); theme and slot APIs changed between v5, v6 and v7.
 - All values from the theme: `theme.palette.*`, `theme.spacing()`, `theme.typography.*`. Extend the theme in the existing `createTheme` call; never hardcode hex/px.
 - `sx` for one-off, `styled()` for reused, theme `components` overrides for global defaults. Not all three for one thing.
 - Use component slots/`slotProps` instead of wrapping and overriding CSS.

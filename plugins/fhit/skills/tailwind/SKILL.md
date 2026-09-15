@@ -6,7 +6,7 @@ user-invocable: false
 
 # Tailwind
 
-- Tokens live in `tailwind.config.*` (`theme.extend`) or `@theme` (v4). Never arbitrary values (`w-[13px]`) when a token exists; new token → config, not inline.
+- Check the installed major first (`docs-lookup`); v3 and v4 configure tokens differently. Tokens live in `tailwind.config.*` (`theme.extend`) or `@theme` (v4). Never arbitrary values (`w-[13px]`) when a token exists; new token → config, not inline.
 - Class order: layout → box → typography → color → state/responsive. Prettier plugin if installed handles it.
 - Repeated class sets ≥3× → component, not `@apply`.
 - Dark mode via the project's strategy (`class`/`media`); every color pair needs its `dark:` counterpart if dark mode exists.

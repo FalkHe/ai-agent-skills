@@ -33,7 +33,7 @@ On each return: update `progress.md` row. `partial`/`blocked` → one retry with
 When dependencies resolve, spawn the next wave. Repeat until all rows are `done` or `failed`.
 
 ## 4. Gates (deterministic, before push)
-Run project lint + formatter, then full test suite (commands from `AGENTS.md`/`docs/architecture.md`).
+Run project lint + formatter, then full test suite (commands from `AGENTS.md`/`docs/architecture.md`), including the browser acceptance suite where one is configured. The app must be running for it (`docker-dev`).
 Failure → spawn the responsible implementer with the exact output. Max 2 rounds per gate, then mark sprint `failed` in progress and go to 5 as draft.
 qa tests still red after all WIs done = implementation gap, not a test bug. Implementers never edit qa tests.
 

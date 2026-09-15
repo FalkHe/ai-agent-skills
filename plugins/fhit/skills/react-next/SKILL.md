@@ -16,7 +16,7 @@ Colocate: `feature/Component.tsx`, `Component.test.tsx`.
 Server: fetch in server components / route handlers. Client: existing data library (TanStack Query, SWR) if present; do not add one. Forms: server actions or existing form library. Global state only if already established.
 
 ## Tests
-Unit/component: Vitest + Testing Library, query by role/label, never by class. Acceptance (qa): Playwright if configured. Name: `it('AC1: …')`.
+Unit/component: Vitest + Testing Library, query by role/label, never by class. Acceptance (qa): Playwright — rules in `browser-check`. Name: `it('AC1: …')`.
 Run: `npm test -- --run` / `pnpm test`; single: `vitest run path`.
 
 ## Lint / format

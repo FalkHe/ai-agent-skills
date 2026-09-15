@@ -42,5 +42,13 @@ Main agent routes work items by type. Each specialist researches its own area in
 | `react-next`, `vue` | same | `frontend` |
 | `tailwind`, `mui` | tokens, styling rules | `ui-designer` |
 | `docker-dev` | local services (MariaDB, PostgreSQL, Redis) | on demand |
+| `docs-lookup` | version-correct docs: context7 → local → official web, version verified | `architect`, `backend-php`, `backend-python`, `frontend`, `ui-designer`, `qa`, `verifier` |
+| `browser-check` | Playwright test runner for committed e2e tests; playwright browser tools for live visual checks | `frontend`, `ui-designer`, `ux-designer`, `qa`, `verifier` |
+
+## Tool access
+
+Agents use `disallowedTools` (denylist), not `tools` (allowlist). A `tools` allowlist removes **every** MCP tool unless each server is named, and the context7 / playwright servers appear under different names depending on how the user installed them (`mcp__context7__*` when added directly, `mcp__plugin_<plugin>_<server>__*` when added as a plugin). The denylist keeps the agent's MCP access working whatever the installation, at the price of a wider built-in tool pool. `Agent` is denied everywhere so specialists cannot spawn specialists; write tools are denied for the read-only agents (`architect` keeps `Write` for its research file, `ux-designer` for its attachment).
+
+Instructions name the servers only by the keywords **context7** and **playwright**, never by tool id — the agent picks whichever variant its session offers.
 
 Terminology (Claude Code, 2026-09): `.claude/commands/` is deprecated; both kinds are **skills** in `.claude/skills/<name>/SKILL.md`. Agents live in `.claude/agents/<name>.md`; body = system prompt.

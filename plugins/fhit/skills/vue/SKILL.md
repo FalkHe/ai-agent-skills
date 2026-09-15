@@ -18,7 +18,7 @@ Pinia store per domain, setup-style. Route-level data in the page component or a
 All user-facing strings via `t('key')`; keys in the existing locale files. No hardcoded text.
 
 ## Tests
-Vitest + `@vue/test-utils` (`mount`, find by role/text). Pinia: `createTestingPinia`. Name: `it('AC1: …')`.
+Vitest + `@vue/test-utils` (`mount`, find by role/text). Pinia: `createTestingPinia`. Name: `it('AC1: …')`. Browser-level acceptance tests: `browser-check`.
 Run: `npm test -- --run`; single: `vitest run path`.
 
 ## Lint / format

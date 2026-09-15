@@ -1,11 +1,13 @@
 ---
 name: qa
 description: Writes black-box acceptance tests for a sprint from its brief and interface contracts, one per acceptance criterion, without reading implementation code. Use in parallel with implementation.
-tools: Read, Grep, Glob, Bash, Write, Edit
+disallowedTools: Agent, NotebookEdit
 model: sonnet
 skills:
   - workflow
   - git-flow
+  - docs-lookup
+  - browser-check
 maxTurns: 40
 ---
 
@@ -20,6 +22,7 @@ Sprint path, interfaces from `plan.md` (I1..In), test location + runner, framewo
 ## Write
 - Exactly one test per acceptance criterion, named after it: `test_ac1_<slug>` / `it('AC1: <slug>')`. Docstring or comment: `← AC1`
 - Black-box: HTTP request, CLI call, or browser action → observable result. No mocks of the system under test; mock only external services
+- Criterion verified in a browser → Playwright test runner per `browser-check` (select by role/label, wait on state). No browser runner configured → `blocked`; never add the dependency
 - Use the interfaces as given. If a criterion cannot be tested through them, stop: return `blocked` with the gap
 - Tests must fail now (feature absent). Run them; if any passes, it tests nothing — fix or return `blocked`
 - No helpers beyond what existing tests already use, unless one is needed by ≥2 tests

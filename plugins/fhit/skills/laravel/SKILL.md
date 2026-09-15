@@ -6,7 +6,7 @@ user-invocable: false
 
 # Laravel
 
-Check version + installed first-party packages first: `composer show laravel/* --direct`. Use what is installed (Breeze/Fortify/Sanctum/Horizon) before writing your own.
+Check version + installed first-party packages first: `composer show laravel/* --direct`. Use what is installed (Breeze/Fortify/Sanctum/Horizon) before writing your own. APIs change between majors — look up anything this repo does not already use (`docs-lookup`).
 
 ## Where things go
 Form Requests for validation, Policies for authorization, Actions/Services for logic longer than a few lines, Resources for API output, Jobs for anything slow. Thin controllers. Enums for fixed sets.

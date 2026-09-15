@@ -6,7 +6,7 @@ user-invocable: false
 
 # FastAPI
 
-Detect tooling: `pyproject.toml` → package manager (uv/poetry/pip), ruff/mypy config, pytest config. Use what is there.
+Detect tooling: `pyproject.toml` → package manager (uv/poetry/pip), ruff/mypy config, pytest config. Use what is there. Pydantic and SQLAlchemy differ sharply between majors — look up the installed version before using an API this repo does not already use (`docs-lookup`).
 
 ## Structure
 One `APIRouter` per resource, mounted in `main.py`/`app.py`. Pydantic models: separate `*In`/`*Out`; never return ORM objects. Dependencies (`Depends`) for DB session, current user, settings. Business logic in a service module, not in the route function.

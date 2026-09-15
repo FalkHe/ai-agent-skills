@@ -97,6 +97,10 @@ Status: `[ ]` open · `[~]` in discussion · `[x]` agreed
 
 ## 8. Tooling `[x]`
 - [x] Claude Code first (`.claude/agents`, `.claude/skills`, `Agent` tool for sub-agents). Instructions = harness-neutral markdown → porting to Codex/Gemini CLI is a file-move, not a rewrite
+- [x] MCP: **context7** for documentation, **playwright** for the browser. Both recommended, neither required — each has a documented fallback (`docs-lookup`, `browser-check`)
+  - Agents name them by keyword only, never by tool id: the same server appears as `mcp__<server>__*` or `mcp__plugin_<plugin>_<server>__*` depending on the install form
+  - Consequence: agents use `disallowedTools` instead of `tools`, because a `tools` allowlist drops every MCP tool that is not named explicitly (see `stack.md → Tool access`)
+  - Docs rule: mandatory lookup before any framework API the repository does not already demonstrate; always pinned to the installed version, never the latest release
 
 ---
 ¹ ADR = Architecture Decision Record: short doc capturing one decision, its context and consequences.

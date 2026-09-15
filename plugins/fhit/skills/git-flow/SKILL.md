@@ -1,12 +1,28 @@
 ---
 name: git-flow
-description: Branch, commit, pull/merge request and review conventions for sprints, with the exact gh (GitHub) and glab (GitLab) commands. Preloaded into sprint, verifier and issue agents; not invoked by users.
+description: Branch, commit, tracker (milestone/issue), pull/merge request and review conventions, with the exact gh (GitHub) and glab (GitLab) commands. Preloaded into intent, backlog, sprint, verifier and issue agents; not invoked by users.
 user-invocable: false
 ---
 
 # Git flow
 
 Detect platform once: `git remote get-url origin` → `github.com` → `gh`; else `glab`.
+
+## Tracker
+One milestone per intent, one issue per backlog line (= per sprint). Every sprint PR/MR carries the milestone and closes its issue.
+
+Milestone title = the intent directory name, `<III>-<slug>` (e.g. `001-user-authentication`). Description = intent title + `docs/intents/<III>-<slug>/`.
+Always look up before creating — the commands are re-run on every `/fhit:backlog`.
+
+| | GitHub | GitLab |
+|---|---|---|
+| find | `gh api repos/{owner}/{repo}/milestones --jq '.[]\|select(.title=="<M>").number'` | `glab api "projects/:id/milestones?title=<M>" --jq '.[0].id'` |
+| create | `gh api repos/{owner}/{repo}/milestones -f title='<M>' -f description='<d>'` | `glab api projects/:id/milestones -f title='<M>' -f description='<d>'` |
+| issue | `gh issue create -t "<outcome>" -F <f> -m '<M>'` | `glab issue create -t "<outcome>" --description-file <f> -m '<M>'` |
+| PR/MR | add `-m '<M>'` to create | add `-m '<M>'` to create |
+
+`<M>` = milestone title; empty `find` result → create. Newer `glab` also has `glab milestone create`; the `api` form above works on every version.
+Issues are closed by the merge (`Closes #<n>` in the PR/MR body). Never close one by hand.
 
 ## Branch
 `sprint/<III>-<NN>-<slug>` from the default branch. Example: `sprint/001-02-sign-in-email-password`.
@@ -41,6 +57,8 @@ Body (≤20 lines):
 ## Assumptions
 - …
 Brief: docs/intents/<III>-<slug>/sprints/<NN>-<slug>/brief.md
+Closes #<sprint issue>
 ```
+Milestone: `-m '<III>-<slug>'` on create (see Tracker).
 
 Merge is human-only. Never merge, never close.

@@ -13,7 +13,7 @@ Paths: intent `docs/intents/<III>-*/`, sprint `<intent>/sprints/<NN>-<slug>/` (c
 
 ## 0. Select
 No NN → every `open` backlog line whose dependencies are `done`, in order, one full run each. `backlog.md` must be `stage: approved`; missing brief → run `/fhit:backlog` first.
-Backlog line → `running`. Refresh brief `Assumptions` if `decisions.md` changed since (`updated:`).
+Backlog line → `running`; note its `Issue` number and the milestone title (`<III>-<slug>`) for step 5. Refresh brief `Assumptions` if `decisions.md` changed since (`updated:`).
 Never ask the human. Decide, record under `progress.md → Issues`, continue.
 
 ## 1. Research
@@ -38,11 +38,11 @@ Failure → spawn the responsible implementer with the exact output. Max 2 round
 qa tests still red after all WIs done = implementation gap, not a test bug. Implementers never edit qa tests.
 
 ## 5. Ship
-Push, create PR/MR (`git-flow` body). Any `failed` row → draft PR, list them in the body.
+Push, create PR/MR (`git-flow` body) with `-m '<III>-<slug>'` and `Closes #<issue>` in the body. Backlog line has no issue (remote added later) → create it now per `git-flow → Tracker`. Any `failed` row → draft PR, list them in the body.
 
 ## 6. Verify
 Spawn `verifier` with intent path, sprint path, PR ref. Record verdict + round in `progress.md → Verify`.
 `changes-requested` → spawn responsible implementer(s) with the failed items → gates → push → verify again. Max 2 rounds total; then draft PR.
 
 ## 7. Close
-`progress.md`: `stage: done`, all rounds logged. Backlog line → `done` (or `failed`). Report to human in ≤10 lines: PR link, verdict, failed items, backlog proposals, verify rounds used (≥2 = "dev agents need tuning").
+`progress.md`: `stage: done`, all rounds logged. Backlog line → `done` (or `failed`). Leave the issue open — the human's merge closes it. Report to human in ≤10 lines: PR link, verdict, failed items, backlog proposals, verify rounds used (≥2 = "dev agents need tuning").

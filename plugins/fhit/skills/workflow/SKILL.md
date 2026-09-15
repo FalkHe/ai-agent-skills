@@ -33,6 +33,7 @@ Exceeding a cap = scope too big. Stop, report, don't write more.
 5. Interfaces between parallel work items are fixed in `plan.md` before implementation.
 6. `progress.md` is the only sprint state. Update after every work item: status + ≤1 line.
 7. Mid-sprint discovery → line in `progress.md` under `Backlog proposals`. Never grow the sprint.
+8. Tracker mirror: intent = milestone, backlog line = issue, sprint = PR/MR carrying both. Files stay the source of truth; the tracker is a view for humans. Commands in `git-flow → Tracker`.
 
 ## Frontmatter
 

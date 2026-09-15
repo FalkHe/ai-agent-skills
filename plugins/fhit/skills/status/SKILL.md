@@ -9,7 +9,7 @@ argument-hint: <intent number> [sprint number]
 
 Read only frontmatter + tables; never research or plan files.
 
-**Intent**: `intent.md` title, decisions count and stage, backlog table with status column, proposals pending.
+**Intent**: `intent.md` title, milestone URL from frontmatter, decisions count and stage, backlog table with status + issue column, proposals pending.
 
 **Sprint** (if given): brief stage, `progress.md` table, issues, verify rounds, branch + PR state (`gh pr view` / `glab mr view` if branch exists).
 

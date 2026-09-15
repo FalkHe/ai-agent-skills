@@ -12,6 +12,8 @@ Same flow as `/fhit:intent` → `/fhit:backlog` → `/fhit:sprint`, but the conv
 ## 1. Capture
 `gh issue view $ARGUMENTS --json title,body,comments` / `glab issue view`. Resolve pointers in the body as in `/fhit:intent` step 1 (a reference to a file, path, or URL → read it, restate the wish from its content; never store the pointer as the wish). `intent.md` = title + body, self-contained parts verbatim, author = issue author, `source: <issue url>` + each resolved pointer.
 
+Create the intent milestone (`git-flow → Tracker`) and assign it to the source issue (`glab issue update <n> -m '<M>'` / `gh issue edit <n> --milestone '<M>'`). The source issue stays the intent's issue; `/fhit:backlog` adds one per sprint under the same milestone.
+
 ## 2. Research
 `architect` intent mode → `research.md`.
 

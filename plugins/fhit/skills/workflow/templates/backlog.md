@@ -9,10 +9,10 @@ stage: draft
 
 Sprint outcomes, dependency-ordered. Status: `open | running | done`.
 
-| # | Outcome (one verifiable statement) | Depends on | Status |
-|---|---|---|---|
-| 01 | <outcome> | – | open |
-| 02 | <outcome> | 01 | open |
+| # | Outcome (one verifiable statement) | Depends on | Issue | Status |
+|---|---|---|---|---|
+| 01 | <outcome> | – | #<n> | open |
+| 02 | <outcome> | 01 | #<n> | open |
 
 ## Proposals
 <items surfaced mid-sprint, awaiting human decision>

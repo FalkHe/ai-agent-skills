@@ -22,5 +22,9 @@ For each `open` line: `sprints/NN-<slug>/brief.md` (template). Criteria from the
 ## 3. Approve
 Show `backlog.md`; briefs available on request. The human judges order, cuts, size (≤10 min to verify by using the product), gaps (every `Dn` covered). Approves / reorders / cuts / merges → backlog and briefs `stage: approved`. This is the last human gate before the PR.
 
-## 4. Report
-≤5 lines: sprint count, next command `/fhit:sprint III` (all) or `/fhit:sprint III 01`.
+## 4. Publish to the tracker
+After approval only, per `git-flow → Tracker`: ensure the intent milestone exists (create if `/fhit:intent` skipped it), then one issue per `open` backlog line — title = outcome, body = the brief's outcome + acceptance criteria + brief path, milestone assigned. Write the issue number into the line's `Issue` column.
+Line already carrying an issue → update its title/body instead of creating a second one. `running`/`done` lines untouched. No git remote → skip the whole step, note it.
+
+## 5. Report
+≤5 lines: sprint count, milestone URL, next command `/fhit:sprint III` (all) or `/fhit:sprint III 01`.

@@ -1,6 +1,6 @@
 ---
 name: intent
-description: Starts a new intent interactively — captures the human's wish verbatim, researches options, discusses with the human until product-visible questions are decided and approved. Hands off to /backlog.
+description: Starts a new intent interactively — captures the human’s wish (resolving any file, path, or URL it points at), researches options, discusses with the human until product-visible questions are decided and approved. Hands off to /backlog.
 disable-model-invocation: true
 argument-hint: <free text describing the wish>
 ---
@@ -10,8 +10,12 @@ argument-hint: <free text describing the wish>
 You lead a discussion with the human. Short messages, one question at a time. Facts from research, opinions marked as such.
 
 ## 1. Capture
+Resolve pointers first. A pointer is any reference to content outside the argument text: `@file`, a path, a URL, an issue number. Read each one, and only the named part of it (one phase, one section). Ambiguous which part → ask, don't guess.
 Next number: highest `docs/intents/III-*` + 1 (start `001`). Slug from the wish, ≤4 words.
-Write `intent.md`: `$ARGUMENTS` verbatim, author = `git config user.name <user.email>`, `stage: approved`.
+Write `intent.md`:
+- Self-contained wish text → verbatim.
+- Pointer → the wish restated from the resolved content, in the human's words where they wrote any. Never store the pointer as the wish.
+- Front matter: author = `git config user.name <user.email>`, `stage: approved`, plus `source: <path|url>` per resolved pointer.
 
 ## 2. Research
 Spawn `architect` in intent mode → `research.md`. Present ≤20 lines: options, trade-offs, recommendation, product-visible open questions. Wait.

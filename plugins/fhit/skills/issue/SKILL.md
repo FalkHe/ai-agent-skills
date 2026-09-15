@@ -10,7 +10,7 @@ argument-hint: <issue number>
 Same flow as `/fhit:intent` → `/fhit:backlog` → `/fhit:sprint`, but the conversation is the issue thread. Platform commands per `git-flow`.
 
 ## 1. Capture
-`gh issue view $ARGUMENTS --json title,body,comments` / `glab issue view`. `intent.md` = title + body verbatim, author = issue author, `source: <issue url>`.
+`gh issue view $ARGUMENTS --json title,body,comments` / `glab issue view`. Resolve pointers in the body as in `/fhit:intent` step 1 (a reference to a file, path, or URL → read it, restate the wish from its content; never store the pointer as the wish). `intent.md` = title + body, self-contained parts verbatim, author = issue author, `source: <issue url>` + each resolved pointer.
 
 ## 2. Research
 `architect` intent mode → `research.md`.

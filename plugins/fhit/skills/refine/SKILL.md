@@ -7,7 +7,7 @@ argument-hint: <intent number> [what to change]
 
 # Refine intent $ARGUMENTS
 
-1. Read `decisions.md`, `backlog.md`, and `progress.md` of any `running` sprint. Nothing else.
+1. Read `decisions.md`, `backlog.md`, and `progress.md` of any `running` sprint, plus any file or URL the change text points at — resolve pointers as in `/fhit:intent` step 1. Nothing else.
 2. Discuss the change as in `/fhit:intent` step 3 (one question at a time; designers/architect for attachments).
 3. Record:
    - New → next `Dn`.

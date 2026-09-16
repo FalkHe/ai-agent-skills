@@ -12,10 +12,10 @@ created: YYYY-MM-DD
 | Option | Pro | Con |
 |---|---|---|
 
-Recommendation: <one line>
+Recommendation: <one sentence>
 
 ## Work items         <!-- sprint level only -->
-- WI1 <name>: <scope, one line>
+- WI1 <name>: <scope, one sentence>
 - WI2 …
 
 ## Interfaces         <!-- sprint level only -->

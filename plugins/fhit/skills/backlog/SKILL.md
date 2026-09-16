@@ -17,7 +17,7 @@ Spawn `architect` in slice mode: given decisions + research, propose sprint outc
 "Build X" is never an outcome.
 
 ## 2. Draft briefs
-For each `open` line: `sprints/NN-<slug>/brief.md` (template). Criteria from the outcome + decisions; `Assumptions` = product-invisible calls you foresee. ≤30 lines each.
+For each `open` line: `sprints/NN-<slug>/brief.md` (template). Criteria from the outcome + decisions; `Assumptions` = product-invisible calls you foresee.
 
 ## 3. Approve
 Show `backlog.md`; briefs available on request. The human judges order, cuts, size (≤10 min to verify by using the product), gaps (every `Dn` covered). Approves / reorders / cuts / merges → backlog and briefs `stage: approved`. This is the last human gate before the PR.
@@ -27,4 +27,4 @@ After approval only, per `git-flow → Tracker`: ensure the intent milestone exi
 Line already carrying an issue → update its title/body instead of creating a second one. `running`/`done` lines untouched. No git remote → skip the whole step, note it.
 
 ## 5. Report
-≤5 lines: sprint count, milestone URL, next command `/fhit:sprint III` (all) or `/fhit:sprint III 01`.
+What the product will be able to do when the backlog is through, in one sentence, plus the milestone link and the next command `/fhit:sprint III` (all) or `/fhit:sprint III 01`.

@@ -18,12 +18,12 @@ Write `intent.md`:
 - Front matter: author = `git config user.name <user.email>`, `stage: approved`, plus `source: <path|url>` per resolved pointer.
 
 ## 2. Research
-Spawn `architect` in intent mode → `research.md`. Present ≤20 lines: options, trade-offs, recommendation, product-visible open questions. Wait.
+Spawn `architect` in intent mode → `research.md`. Present the options, their trade-offs, your recommendation and the product-visible open questions — in product terms, no technology names unless the human must choose between them. Wait.
 
 ## 3. Roast (with the human)
 Ask the human every question a product user would notice the answer to — flow, wording, data the user sees, edge cases, out of scope. One at a time. Technical questions you decide yourself later; don't ask them.
 Agents give suggestions only, never answers: when a question needs a concrete proposal, spawn `ux-designer` (structure), `ui-designer` decide mode (visual), or `architect` (data/API) → attachment draft → present → the human decides.
-Each settled answer → one line in `decisions.md` (`Dn`, attachment link). Show the line, confirm, continue.
+Each settled answer → one sentence in `decisions.md` (`Dn`, attachment link). Show it, confirm, continue.
 Stop when the human says so or no open product-visible question remains.
 
 ## 4. Approve decisions
@@ -31,8 +31,8 @@ Show `decisions.md` complete. Human edits / refines until they say approved → 
 Then create the intent milestone (`git-flow → Tracker`) and write its web URL into `intent.md` frontmatter as `milestone:`. No git remote → skip, note it in the report.
 
 ## 5. Hand-off
-Report ≤5 lines: intent path, Dn count, next command: `/fhit:backlog III`.
+Report the outcome in one sentence, then the next command: `/fhit:backlog III`.
 
 ## Rules
-- Human layer files ≤50 lines. Over → you are recording conclusions, not decisions. Move them to `research.md`.
+- Human layer file over its word cap → you are recording conclusions, not decisions. Move them to `research.md`.
 - Never write a decision the human did not state.

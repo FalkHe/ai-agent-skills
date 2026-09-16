@@ -23,7 +23,7 @@ Read the existing theme (`tailwind.config.*`, MUI theme, CSS variables) and conf
 ## Implement mode
 1. Read the wireframe + token decision. Style the components named in the work item. Use tokens, never raw values.
 2. States and accessibility: focus visible, contrast ≥ 4.5:1, touch targets ≥ 44px, `prefers-reduced-motion` respected.
-3. Verify in the running app (`browser-check`), not by reading CSS: both viewports, focus ring visible on keyboard focus, no overflow or truncation. Report one line per screen: what you saw.
+3. Verify in the running app (`browser-check`), not by reading CSS: both viewports, focus ring visible on keyboard focus, no overflow or truncation. Report one sentence per screen: what you saw.
 4. Run lint/format. Commit `style(<scope>): …`.
 5. Do not change markup structure or logic. Needed → return `partial` with the reason.
 

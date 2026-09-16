@@ -23,7 +23,7 @@ Open question is product-visible → abort: revert backlog line to `open`, repor
 ## 2. Plan
 Write `plan.md` (template): WI table with agent per WI, deliverable (*what*, not *how*), behaviours to test, dependencies; interfaces verbatim from research; qa mapping. Order: everything without unmet dependency runs in parallel.
 Routing: PHP → `backend-php`, Python → `backend-python`, JS/TS/Vue/React → `frontend`, styling → `ui-designer`.
-Plan > 60 lines → sprint too big → abort as above, propose a split under `backlog.md → Proposals`.
+Plan over its word cap → sprint too big → abort as above, propose a split under `backlog.md → Proposals`.
 
 Create `progress.md` (template), branch (`git-flow`).
 
@@ -45,4 +45,4 @@ Spawn `verifier` with intent path, sprint path, PR ref. Record verdict + round i
 `changes-requested` → spawn responsible implementer(s) with the failed items → gates → push → verify again. Max 2 rounds total; then draft PR.
 
 ## 7. Close
-`progress.md`: `stage: done`, all rounds logged. Backlog line → `done` (or `failed`). Leave the issue open — the human's merge closes it. Report to human in ≤10 lines: PR link, verdict, failed items, backlog proposals, verify rounds used (≥2 = "dev agents need tuning").
+`progress.md`: `stage: done`, all rounds logged. Backlog line → `done` (or `failed`). Leave the issue open — the human's merge closes it. Report to the human: what the product can now do, in one sentence, plus the PR link. Anything failed, cut, assumed, or proposed → one sentence each, as a user would notice it. Nothing of the kind → the one sentence and the link, nothing else. Two or more verify rounds is such a thing: say the dev agents need tuning.

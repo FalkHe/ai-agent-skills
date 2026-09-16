@@ -34,4 +34,4 @@ For seeing the real thing: verifying your own change, judging a rendered UI, rea
 
 ## Evidence
 
-Report an observation as one line: what you did → what you saw (`clicked Sign in at 390×844 → error text visible, no console errors`). Screenshots stay outside the repository (the runner's own output directory or a temp path) and are cited by path — never `git add` an image as proof.
+Report an observation as one sentence: what you did → what you saw (`clicked Sign in at 390×844 → error text visible, no console errors`). Screenshots stay outside the repository (the runner's own output directory or a temp path) and are cited by path — never `git add` an image as proof.

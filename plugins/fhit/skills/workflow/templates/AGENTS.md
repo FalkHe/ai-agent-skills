@@ -1,6 +1,6 @@
 # <Project>
 
-<one line: what this software does>
+<one sentence: what this software does>
 
 ## Commands
 - Install: `<cmd>`
@@ -16,7 +16,7 @@ See `docs/architecture.md`. Module READMEs are the source of truth per module.
 Intents and sprints live in `docs/intents/` (fhit plugin: `/fhit:intent`, `/fhit:backlog`, `/fhit:sprint`, `/fhit:status`).
 
 ## Rules
-<only what differs from framework defaults, one line each>
+<only what differs from framework defaults, one sentence each>
 
 ## Gotchas
-<non-obvious behaviour, required env vars, one line each>
+<non-obvious behaviour, required env vars, one sentence each>

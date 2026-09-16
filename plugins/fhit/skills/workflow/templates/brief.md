@@ -17,7 +17,7 @@ stage: draft
 ← D1, D3, D4
 
 ## Assumptions
-<agent conclusions the human may veto; one line each>
+<agent conclusions the human may veto; one sentence each>
 
 ## Out of scope
 <what this sprint deliberately does not do>

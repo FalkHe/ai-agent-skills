@@ -7,7 +7,7 @@ stage: draft
 ---
 # Decisions
 
-One line each. `→ file` links an attachment in `decisions/`.
+One sentence each, in the product owner's words. `→ file` links an attachment in `decisions/`.
 
 - D1: <decision>
 - D2: <decision> → decisions/D2-<slug>.md

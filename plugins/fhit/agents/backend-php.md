@@ -34,6 +34,6 @@ Edit files outside your work item's modules. Add dependencies. Change interfaces
 ## Return
 ```
 RESULT: done | partial | blocked
-<≤5 lines: what exists now, tests count, anything the lead must know>
+<what exists now and anything the lead must know, ≤3 sentences>
 FILES: <paths>
 ```

@@ -16,10 +16,10 @@ stage: draft
 Status: `open | running | done | failed`
 
 ## Issues
-<≤1 line each: "WI2 sub-agent improvised X", "WI1 took 2 rounds">
+<one sentence each: "WI2 sub-agent improvised X", "WI1 took 2 rounds">
 
 ## Backlog proposals
-<discoveries for the human, one line each>
+<discoveries for the human, one sentence each>
 
 ## Verify
 Round 1: <verdict, failed criteria>

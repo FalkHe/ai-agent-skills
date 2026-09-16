@@ -17,7 +17,7 @@ Intent path, the question (e.g. "sign-in screen incl. error states"), relevant d
 ## Do
 1. Read existing UI for patterns (component names, layout, wording tone). Match them. App running → look at the real screens (`browser-check`) rather than inferring them from source.
 2. Produce one attachment `decisions/Dn-<slug>.md` (frontmatter, `stage: draft`):
-   - **Flow**: numbered steps, one line each, including error and empty states
+   - **Flow**: numbered steps, one sentence each, including error and empty states
    - **Wireframe**: ASCII, one per screen state, labels are the real wording
    - **Wording**: table label → text, if more than 5 strings
    - **Open**: choices the human must make, max 3, each with your default

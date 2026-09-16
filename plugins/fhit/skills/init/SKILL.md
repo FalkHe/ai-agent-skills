@@ -11,4 +11,4 @@ disable-model-invocation: true
 3. `CLAUDE.md`: missing → single line `@AGENTS.md`. Exists without it → append the line.
 4. `docs/architecture.md`: missing → template, tech stack filled from step 1; rest `<TODO>`.
 5. `docs/intents/.gitkeep`.
-6. Report ≤10 lines: files created/changed, `<TODO>` count, next: `/fhit:intent <wish>`.
+6. Report what is set up now, any `<TODO>` left for the human, next: `/fhit:intent <wish>`.

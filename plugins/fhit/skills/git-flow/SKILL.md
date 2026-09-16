@@ -48,14 +48,15 @@ Push, then:
 
 Self-approval is rejected when author = reviewer account → fall back to comment, state it.
 
-Body (≤20 lines):
+Body — read by the product owner (`workflow`), so: what changed, how to see it, what to watch out for. No paths beyond the brief link, no symbols, no test names.
 ```
-## Outcome
-<one line>
-## Acceptance criteria
-- AC1 … 
-## Assumptions
-- …
+## What changed
+<one or two sentences, in the product's terms>
+## How to check it
+- <criterion as something a user does and sees>
+## Heads-up
+<only if there is one: an assumption, a cut, a known gap — otherwise delete the section>
+
 Brief: docs/intents/<III>-<slug>/sprints/<NN>-<slug>/brief.md
 Closes #<sprint issue>
 ```

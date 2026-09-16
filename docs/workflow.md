@@ -8,9 +8,9 @@ Reference for the agent stack. Agreed 2026-09-14; discussion in `discussion-road
 - **Sprint**: one outcome, implemented in one autonomous agentic run.
 - **Decision**: fixed by a human. Only a human may change it.
 - **Conclusion**: derived by an agent from decisions. Mutable. Must cite its source (`← D3`) or be marked `ASSUMPTION`.
-- **Human layer**: docs a human must read. ≤50 lines each (hard max 100).
+- **Human layer**: docs and messages a human reads. Reader = the product owner: knows the product, has not read the code. Best 250 words, max 500.
 - **Tracker**: the GitHub/GitLab side — milestone per intent, issue per backlog line, PR/MR per sprint. A view for humans; `docs/intents/` stays the source of truth.
-- **Agent layer**: docs between agents. Human never required to read.
+- **Agent layer**: docs between agents. Human never required to read. `research.md` best 500 / max 1000 words, `plan.md` best 250 / max 500.
 
 ## Principles
 
@@ -20,22 +20,24 @@ Reference for the agent stack. Agreed 2026-09-14; discussion in `discussion-road
 4. Source of truth = code + module READMEs. Never past sprints.
 5. Prefer parallelism → interfaces between work items are fixed before implementation.
 6. Every tracker object mirrors exactly one file-layer object. No granularity exists in the tracker that does not exist in `docs/intents/`.
+7. Report exceptions, not progress. A run that went as planned is one sentence and a link; only what the human must act on gets more. Failures are named by what a user would notice, never by where they broke.
+8. Text is measured in words (`wc -w`), never in lines — a line cap is met by writing one very long line, which is worse, not better.
 
 ## Layout
 
 ```
-AGENTS.md                         ≤60 lines: role, where things are, how to run tests. CLAUDE.md = @AGENTS.md
+AGENTS.md                         ≤400 words: role, where things are, how to run tests. CLAUDE.md = @AGENTS.md
 docs/architecture.md              current state, facts only ("What → what for"). Sections: Tech stack, Structure, Conventions, Infrastructure
 docs/intents/001-<slug>/
   intent.md                       H  human input (pointers resolved) + date + milestone url. Immutable
   research.md                     A  options, landscape, codebase facts
-  decisions.md                    H  index D1..Dn, one line each
+  decisions.md                    H  index D1..Dn, one sentence each
   decisions/Dn-<slug>.md          H  attachment per decision (wireframe, data model, wording). No cap
-  backlog.md                      H  sprint outcomes, one line each, dependency-ordered, with issue number
+  backlog.md                      H  sprint outcomes, one sentence each, dependency-ordered, with issue number
   sprints/01-<slug>/
-    brief.md                      H  ≤30 lines: outcome, acceptance criteria, ← decisions, assumptions
+    brief.md                      H  outcome, acceptance criteria, ← decisions, assumptions
     research.md                   A  implementation facts, work-item slicing, interfaces
-    plan.md                       A  ≤60 lines: work items, order, deliverable + test per item, interface contracts
+    plan.md                       A  work items, order, deliverable + test per item, interface contracts
     progress.md                   A  sprint state: items done/undone, ≤1-line note each
 ```
 H = human layer, A = agent layer. No spaces in paths. Intents 3 digits, sprints 2.
@@ -58,8 +60,8 @@ No `version` field — git has it.
 Trigger: prompt (`/fhit:intent`, chat) or issue (`/fhit:issue`, same gates via issue comments: `approve`, `Dn: <answer>`, `stop`).
 
 1. **Capture** input → `intent.md`. Self-contained text verbatim; a pointer (file, path, URL, issue) is read and the wish restated from its content, with `source:` recorded.
-2. **Research** options + codebase → `research.md`. Present ≤20 lines: options, trade-offs, recommendation.
-3. **Roast** — a conversation with the human. Agent asks product-visible questions; designers/architect only supply proposals. Each answer → one line in `decisions.md` (+ attachment).
+2. **Research** options + codebase → `research.md`. Present options, trade-offs, recommendation — in product terms.
+3. **Roast** — a conversation with the human. Agent asks product-visible questions; designers/architect only supply proposals. Each answer → one sentence in `decisions.md` (+ attachment).
 4. **Approve decisions**: human reviews and refines `decisions.md` → `stage: approved`. Milestone `<III>-<slug>` created, URL into `intent.md`.
 5. **Backlog** (`/fhit:backlog`): propose sprint outcomes + draft briefs → human judges order, cuts, size, gaps → approved. Last gate before the PR. After approval each `open` line gets an issue on the milestone.
 
@@ -75,12 +77,12 @@ Pre-condition: backlog approved. Zero open human decisions. `/fhit:sprint III` r
 | Plan | main agent | `plan.md`. No implementation detail (paths, methods, names) except interface contracts between work items |
 | Implement | sub-agents per work item, parallel where possible | code + unit/integration tests, one commit per item. Main agent passes only the bits each item needs. Self-check = lint/format only |
 | QA | `qa` sub-agent, parallel to Implement | acceptance tests, one per criterion, black-box, derived from brief + interface contracts — never from code |
-| Ship | main agent | lint + full test suite green (fix inside team, never push red) → push branch `sprint/<intent>-<sprint>-<slug>`, PR/MR ≤20 lines: outcome, criteria, assumptions, link to brief, milestone assigned, `Closes #<issue>` |
+| Ship | main agent | lint + full test suite green (fix inside team, never push red) → push branch `sprint/<intent>-<sprint>-<slug>`, PR/MR in the product owner's language: what changed, how to check it, heads-up if any, link to brief, milestone assigned, `Closes #<issue>` |
 | Verify | separate agent, fresh context | LLM judgement on the PR/MR (see below); approve or request changes |
 
 Main agent keeps `progress.md` current: state + short notes ("done, 3 tests", "sub-agent improvised", "missed goal").
 Mid-sprint discoveries → proposed backlog item, never sprint growth.
-Plan/research exceeding caps = sprint too big → report, stop.
+Plan/research exceeding its word cap = sprint too big → report, stop.
 
 ### Tests — no test without a reason
 
@@ -97,7 +99,7 @@ Plan/research exceeding caps = sprint too big → report, stop.
 Deterministic, in Ship, before push: lint/format → tests (new behaviour covered, suite green). Break on first failure → back to team.
 
 LLM judge, in Verify, on the PR/MR: each acceptance criterion vs. brief + decisions; no secrets / debug leftovers; module README + `architecture.md` updated if touched; `progress.md` complete; PR body present.
-Result posted as review (approve / request changes; needs own account, else comment). Max 2 fix rounds → mark PR draft, list failed criteria. **Merge = human only** — and the merge is what closes the sprint issue, so the milestone's progress equals merged sprints.
+Result posted as review, product owner's language, failures only (approve / request changes; needs own account, else comment). Max 2 fix rounds → mark PR draft, list failed criteria. **Merge = human only** — and the merge is what closes the sprint issue, so the milestone's progress equals merged sprints.
 
 ## Sprint definition
 

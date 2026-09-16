@@ -7,7 +7,7 @@ stage: draft
 ---
 # Backlog
 
-Sprint outcomes, dependency-ordered. Status: `open | running | done`.
+Sprint outcomes in the product owner's words, dependency-ordered. Status: `open | running | done`.
 
 | # | Outcome (one verifiable statement) | Depends on | Issue | Status |
 |---|---|---|---|---|

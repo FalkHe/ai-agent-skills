@@ -14,4 +14,4 @@ argument-hint: <intent number> [what to change]
    - Changed → edit the `Dn` line in place, append `(rev YYYY-MM-DD, was: <old>)`. Never renumber.
    - Attachment changed → new version in place, `updated:` bumped.
 4. Impact: for each backlog line and any approved brief that references the touched `Dn` → list it. Sprint `done` → new backlog line "adapt to Dn"; `running` → warn: the sprint will finish on the old decision; `open` → adjust the line.
-5. Show impact, get approval, apply. Report ≤5 lines.
+5. Show impact, get approval, apply. Report what changed for the product in one sentence, plus anything now at risk.

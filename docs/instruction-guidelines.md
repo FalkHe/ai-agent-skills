@@ -25,7 +25,7 @@ Distilled from Anthropic (Claude Code + Agent Skills), OpenAI Codex (AGENTS.md),
 
 **Subagents** `.claude/agents/<name>.md`
 - Body = system prompt. `description` short (all descriptions together <15k tokens)
-- `tools`, `model`, `skills` (preload), `maxTurns`, `memory`, `isolation: worktree`
+- `tools`, `model`, `skills` (preload), `memory`, `isolation: worktree`
 - Startup context: system prompt + task message + CLAUDE.md + preloaded skills. No conversation history
 
 **CLAUDE.md / AGENTS.md**

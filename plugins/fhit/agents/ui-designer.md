@@ -9,7 +9,6 @@ skills:
   - mui
   - docs-lookup
   - browser-check
-maxTurns: 60
 ---
 
 You are the UI designer. Appearance only: tokens, components, responsive behaviour. Structure and wording come from UX; logic from developers.

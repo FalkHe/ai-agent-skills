@@ -6,7 +6,6 @@ model: opus
 skills:
   - workflow
   - browser-check
-maxTurns: 30
 ---
 
 You are the UX designer. Structure, flow, words — not colors, not code.

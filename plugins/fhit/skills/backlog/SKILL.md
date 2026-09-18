@@ -24,9 +24,9 @@ For every `open` row, write `sprints/NN-<slug>/brief.md` from its template. `## 
 ## 3. Approve
 Show `backlog.md`; briefs available on request. The human judges the Tasks, order, cuts, size, and gaps (every `Dn` covered). Approves / reorders / cuts / merges → backlog and briefs `stage: approved`. This is the last human gate before the PR.
 
-## 4. Publish to the tracker
-After approval only, per `git-flow → Tracker`: ensure the intent milestone exists (create if `/fhit:intent` skipped it), then one issue per `open` backlog row — title = a concise form of its Task, body = the brief's Task + Outcome + Acceptance criteria + brief path, milestone assigned. Write the issue number into the row's `Issue` column.
-Row already carrying an issue → update its title/body instead of creating a second one. `running`/`done` rows untouched. No git remote → skip the whole step, note it.
+## 4. Publish
+After approval only: `git-flow → Provider steps → Backlog approved`. Without a provider the `Issue` column is `–` and the step is done.
+With a provider: milestone exists (create it if `/fhit:intent` skipped it), then one issue per `open` row — title = a concise form of its Task, body = the brief's Task + Outcome + Acceptance criteria + brief path, milestone assigned. Issue number → the row's `Issue` column. Row already carrying an issue → update it, never create a second one. `running`/`done` rows untouched.
 
 ## 5. Report
-What the product will be able to do when the backlog is through, in one sentence, plus the milestone link and the next command `/fhit:sprint III` (all) or `/fhit:sprint III 01`.
+What the product will be able to do when the backlog is through, in one sentence, plus the milestone link (with a provider) and the next command `/fhit:sprint III` (all) or `/fhit:sprint III 01`.

@@ -11,7 +11,7 @@ Derived from `workflow.md`. Agreed 2026-09-14. Files: `plugins/fhit/agents/*.md`
 | `/fhit:issue <#id>` | 1–2 | Same flow, human in the loop via issue comments (proposals → `approve` / `Dn:` replies). Then backlog + sprints |
 | `/fhit:refine <intent>` | 1/2 | Add/change decisions (+ attachments), re-check backlog for conflicts |
 | `/fhit:sprint <intent> [NN]` | 2 | Autonomous, no questions: research → plan → implement ‖ qa → gates → ship → verify. No NN = all open sprints |
-| `/fhit:init` | 0 | Scaffolds `AGENTS.md`, `CLAUDE.md` import, `docs/architecture.md`, `docs/intents/` |
+| `/fhit:init` | 0 | Scaffolds `AGENTS.md`, `CLAUDE.md` import, `docs/architecture.md`, `docs/intents/`; asks for the provider (`github` / `gitlab` / `none`) and the `Human` / `Agent` accounts → `AGENTS.md → Workflow` |
 | `/fhit:status <intent \| sprint>` | – | Reads state (`backlog.md`, `progress.md`); resume point after crash |
 
 Plan and Ship stay in the main agent (`/fhit:sprint`): plan needs full sprint context, ship is deterministic.
@@ -27,7 +27,7 @@ Plan and Ship stay in the main agent (`/fhit:sprint`): plan needs full sprint co
 | `backend-python` | 2 | FastAPI, Typer |
 | `frontend` | 2 | React/Next, Vue, Tailwind, MUI |
 | `qa` | 2 | acceptance tests from brief + interface contracts, black-box, parallel to implementation |
-| `verifier` | 2 | LLM judge on PR/MR; checks tests for reason + real assertions |
+| `verifier` | 2 | LLM judge on the review (branch + `review.md`, or PR/MR); checks tests for reason + real assertions |
 
 Main agent routes work items by type. Each specialist researches its own area in Phase 2.
 
@@ -36,7 +36,8 @@ Main agent routes work items by type. Each specialist researches its own area in
 | Skill | Content | Preloaded into |
 |---|---|---|
 | `workflow` | layout, frontmatter, caps, handoff format, templates | all agents, all command skills |
-| `git-flow` | branches, conventional commits, `gh` / `glab` PR + review commands | `/fhit:sprint`, `verifier` |
+| `git-flow` | branches, conventional commits, review / verdict / merge rules, provider steps with plain-git defaults | implementers, `qa`, `verifier`; all command skills |
+| `github`, `gitlab` | the provider steps in `gh` / `glab`: account check, milestone, issue, PR/MR with reviewer `Human` + assignee `Agent`, verdict, status, issue thread | loaded at runtime by whoever runs a provider step, when `AGENTS.md → Workflow` names that provider |
 | `laravel` | conventions, testing, best practices | `backend-php` |
 | `fastapi`, `typer` | same | `backend-python` |
 | `react-next`, `vue` | same | `frontend` |

@@ -28,7 +28,7 @@ Stop when the human says so or no open product-visible question remains.
 
 ## 4. Approve decisions
 Show `decisions.md` complete. Human edits / refines until they say approved → `stage: approved`. Not before.
-Then create the intent milestone (`git-flow → Tracker`) and write its web URL into `intent.md` frontmatter as `milestone:`. No git remote → skip, note it in the report.
+Then `git-flow → Provider steps → Intent approved`: `intent.md` frontmatter `milestone:` = the milestone URL, or `–` without a provider.
 
 ## 5. Hand-off
 Report the outcome in one sentence, then the next command: `/fhit:backlog III`.

@@ -12,7 +12,7 @@ Work is split into two phases — one with the human in the loop, one without.
 
 **Phase 2 — Sprint (autonomous).** A *sprint* is one Task with an Outcome a PM/PO can verify by using the product or reviewing the merge request in under five minutes, with zero open decisions. Each sprint runs unattended: research → plan → parallel implementation by work item → acceptance tests written blind from the brief → lint and full suite green → pull request written for the product owner → a fresh-context verifier judging the PR against its brief. **Merging is the human's job** and nothing else.
 
-Everything lives in `docs/intents/` as the source of truth and is mirrored into the tracker: milestone per intent, issue per sprint, PR/MR per sprint. Human-facing documents are capped at 500 words, agent-to-agent handoffs at 1000 — a plan that outgrows its cap means the sprint is too big.
+Everything lives in `docs/intents/` and git as the source of truth — plain git is enough: a `review.md` per sprint tells the product owner what changed and how to check it, and the branch is merged by hand. Configure GitHub or GitLab in `/fhit:init` and the same objects are mirrored: milestone per intent, issue per sprint, PR/MR per sprint with the review as body, the product owner as reviewer. Human-facing documents are capped at 500 words, agent-to-agent handoffs at 1000 — a plan that outgrows its cap means the sprint is too big.
 
 Full reference: [`docs/workflow.md`](docs/workflow.md).
 
@@ -20,12 +20,12 @@ Full reference: [`docs/workflow.md`](docs/workflow.md).
 
 | Command | Does |
 |---|---|
-| `/fhit:init` | Scaffolds a project for the workflow — `AGENTS.md`, `CLAUDE.md` import, `docs/architecture.md`, `docs/intents/`. Idempotent |
+| `/fhit:init` | Scaffolds a project for the workflow — `AGENTS.md`, `CLAUDE.md` import, `docs/architecture.md`, `docs/intents/`. Asks for the repository provider (GitHub, GitLab or none) and the product owner's and the agent's accounts. Idempotent |
 | `/fhit:intent` | Starts an intent from chat: captures the wish, researches, discusses until decisions are approved |
-| `/fhit:issue` | Same, driven from a GitHub/GitLab issue — gates answered as issue comments (`approve`, `Dn: …`, `stop`) |
+| `/fhit:issue` | Same, driven from a GitHub/GitLab issue — gates answered as issue comments (`approve`, `Dn: …`, `stop`) by the configured product owner. Needs a provider |
 | `/fhit:backlog` | Slices an approved intent into a sprint backlog and drafts one brief each, for human approval |
 | `/fhit:refine` | Adds or revises a decision mid-way and re-checks the backlog for conflicts |
-| `/fhit:sprint` | Runs one or all open sprints autonomously through to a verified PR. Asks nothing |
+| `/fhit:sprint` | Runs one or all open sprints autonomously through to a verified review (branch + `review.md`, or PR/MR). Asks nothing |
 | `/fhit:status` | Shows intent/sprint state and the resume point after an interruption. Read-only |
 
 ## Agents
@@ -41,11 +41,11 @@ Each runs in its own context and gets only what its job needs.
 | `backend-python` | One backend work item in Python: FastAPI endpoints, Typer commands, services, tests |
 | `frontend` | One frontend work item in TypeScript: React/Next.js or Vue components, state, API calls, tests |
 | `qa` | Black-box acceptance tests, one per criterion, derived from the brief without reading implementation code |
-| `verifier` | Fresh-context judgement of the finished PR against brief and decisions — approve or request changes |
+| `verifier` | Fresh-context judgement of the finished review against brief and decisions — approve or request changes |
 
 ## Skills
 
-**Process** — `workflow` (document layout, frontmatter, word caps, handoff format; loaded by every agent), `git-flow` (branch, commit, milestone/issue, PR/MR conventions with the exact `gh`/`glab` commands).
+**Process** — `workflow` (document layout, frontmatter, word caps, handoff format; loaded by every agent), `git-flow` (branch, commit, review and merge rules, provider-agnostic), `github` / `gitlab` (the exact `gh` / `glab` commands for milestone, issue, PR/MR, review; loaded only when the project names that provider).
 
 **Framework knowledge** — `laravel`, `fastapi`, `typer`, `react-next`, `vue`, `tailwind`, `mui`, `docker-dev`. Conventions, test runners and linters per stack, so implementers do not reinvent project structure.
 

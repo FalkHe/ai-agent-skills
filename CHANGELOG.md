@@ -1,5 +1,25 @@
 # Changelog
 
+## 2026-09-18 - Make The Workflow Provider-Agnostic
+
+Rewrote the git flow so plain git is the complete baseline and GitHub or
+GitLab only mirror it. Previously a repository without a supported provider
+was routed to `glab` and the sprint died at the push step.
+
+- `git-flow` now names provider steps (intent approved, backlog approved,
+  sprint shipped, review diff, verdict, status, merge), each with a plain-git
+  default; every `gh` / `glab` command moved out of it.
+- Added `github` and `gitlab` skills implementing those steps, with the
+  product owner as reviewer and the agent account as author/assignee, and an
+  account check before the first command.
+- Added `review.md` per sprint: the provider-agnostic PR body and verdict
+  record, read by the product owner before merging.
+- `/fhit:init` asks for the provider and the `Human` / `Agent` accounts and
+  writes them to `AGENTS.md → Workflow`; all commands read them from there.
+- `/fhit:issue` requires a provider and accepts answers only from the
+  configured `Human` account.
+- Bumped the plugin version to `0.3.0`.
+
 ## 2026-09-18 - Make Sprint Tasks Explicit
 
 Changed FHIT planning artifacts so agents receive an explicit description of

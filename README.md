@@ -8,9 +8,9 @@ An agent stack for software development, shipped as the Claude Code plugin **`fh
 
 Work is split into two phases — one with the human in the loop, one without.
 
-**Phase 1 — Intent (human in the loop).** An *intent* is one wish in any roughness ("we need user auth"). The stack researches options and the existing codebase, then *roasts* the human: it asks only product-visible questions and records each answer as a one-sentence **decision** — fixed, changeable only by a human. Anything a user would not notice, the agents conclude themselves and list for veto. Once decisions are approved, the intent is sliced into a **backlog** of sprint outcomes, which the human approves. That is the last gate.
+**Phase 1 — Intent (human in the loop).** An *intent* is one wish in any roughness ("we need user auth"). The stack researches options and the existing codebase, then *roasts* the human: it asks only product-visible questions and records each answer as a one-sentence **decision** — fixed, changeable only by a human. Anything a user would not notice, the agents conclude themselves and list for veto. Once decisions are approved, the intent is sliced into a **backlog** of sprints. Every sprint has an actionable Task plus a separately verifiable Outcome, and the human approves the backlog. That is the last gate.
 
-**Phase 2 — Sprint (autonomous).** A *sprint* is one outcome verifiable by using the product in under ten minutes, with zero open decisions. Each sprint runs unattended: research → plan → parallel implementation by work item → acceptance tests written blind from the brief → lint and full suite green → pull request written for the product owner → a fresh-context verifier judging the PR against its brief. **Merging is the human's job** and nothing else.
+**Phase 2 — Sprint (autonomous).** A *sprint* is one Task with an Outcome a PM/PO can verify by using the product or reviewing the merge request in under five minutes, with zero open decisions. Each sprint runs unattended: research → plan → parallel implementation by work item → acceptance tests written blind from the brief → lint and full suite green → pull request written for the product owner → a fresh-context verifier judging the PR against its brief. **Merging is the human's job** and nothing else.
 
 Everything lives in `docs/intents/` as the source of truth and is mirrored into the tracker: milestone per intent, issue per sprint, PR/MR per sprint. Human-facing documents are capped at 500 words, agent-to-agent handoffs at 1000 — a plan that outgrows its cap means the sprint is too big.
 
@@ -23,7 +23,7 @@ Full reference: [`docs/workflow.md`](docs/workflow.md).
 | `/fhit:init` | Scaffolds a project for the workflow — `AGENTS.md`, `CLAUDE.md` import, `docs/architecture.md`, `docs/intents/`. Idempotent |
 | `/fhit:intent` | Starts an intent from chat: captures the wish, researches, discusses until decisions are approved |
 | `/fhit:issue` | Same, driven from a GitHub/GitLab issue — gates answered as issue comments (`approve`, `Dn: …`, `stop`) |
-| `/fhit:backlog` | Slices an approved intent into sprint outcomes and drafts one brief each, for human approval |
+| `/fhit:backlog` | Slices an approved intent into a sprint backlog and drafts one brief each, for human approval |
 | `/fhit:refine` | Adds or revises a decision mid-way and re-checks the backlog for conflicts |
 | `/fhit:sprint` | Runs one or all open sprints autonomously through to a verified PR. Asks nothing |
 | `/fhit:status` | Shows intent/sprint state and the resume point after an interruption. Read-only |

@@ -13,5 +13,5 @@ argument-hint: <intent number> [what to change]
    - New → next `Dn`.
    - Changed → edit the `Dn` line in place, append `(rev YYYY-MM-DD, was: <old>)`. Never renumber.
    - Attachment changed → new version in place, `updated:` bumped.
-4. Impact: for each backlog line and any approved brief that references the touched `Dn` → list it. Sprint `done` → new backlog line "adapt to Dn"; `running` → warn: the sprint will finish on the old decision; `open` → adjust the line.
+4. Impact: for each backlog row and any approved brief that references the touched `Dn` → list it. Sprint `done` → propose a new row whose Task adapts the product to `Dn`; `running` → warn: the Sprint will finish on the old decision; `open` → adjust its backlog Task, brief Task, and Outcome together.
 5. Show impact, get approval, apply. Report what changed for the product in one sentence, plus anything now at risk.

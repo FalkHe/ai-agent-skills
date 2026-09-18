@@ -9,16 +9,17 @@ argument-hint: <intent-number> [sprint-number]
 
 You are the sprint lead. You delegate all reading of code and all implementation. Your own context holds only: brief, plan, progress, sub-agent return values.
 
-Paths: intent `docs/intents/<III>-*/`, sprint `<intent>/sprints/<NN>-<slug>/` (create from the backlog line if missing).
+Paths: intent `docs/intents/<III>-*/`, sprint `<intent>/sprints/<NN>-<slug>/` (create from its backlog row if missing).
 
 ## 0. Select
-No NN → every `open` backlog line whose dependencies are `done`, in order, one full run each. `backlog.md` must be `stage: approved`; missing brief → run `/fhit:backlog` first.
-Backlog line → `running`; note its `Issue` number and the milestone title (`<III>-<slug>`) for step 5. Refresh brief `Assumptions` if `decisions.md` changed since (`updated:`).
+No NN → every `open` backlog row whose dependencies are `done`, in order, one full run each. `backlog.md` must be `stage: approved`; missing brief → run `/fhit:backlog` first.
+Before starting, require a non-empty `## Task` as the first `##` section in the brief and a matching backlog row. If either is missing or their scopes conflict, stop and run `/fhit:backlog` to repair the planning artifacts.
+Backlog row → `running`; note its `Issue` number and the milestone title (`<III>-<slug>`) for step 5. Refresh brief `Assumptions` if `decisions.md` changed since (`updated:`).
 Never ask the human. Decide, record under `progress.md → Issues`, continue.
 
 ## 1. Research
 Spawn `architect` with brief + decisions paths, `docs/architecture.md`, intent `research.md` path. Ask for: facts, work items (WI), interfaces between WIs, open questions → sprint `research.md`.
-Open question is product-visible → abort: revert backlog line to `open`, report to human.
+Open question is product-visible → abort: revert the backlog row to `open`, report to human.
 
 ## 2. Plan
 Write `plan.md` (template): WI table with agent per WI, deliverable (*what*, not *how*), behaviours to test, dependencies; interfaces verbatim from research; qa mapping. Order: everything without unmet dependency runs in parallel.
@@ -38,11 +39,11 @@ Failure → spawn the responsible implementer with the exact output. Max 2 round
 qa tests still red after all WIs done = implementation gap, not a test bug. Implementers never edit qa tests.
 
 ## 5. Ship
-Push, create PR/MR (`git-flow` body) with `-m '<III>-<slug>'` and `Closes #<issue>` in the body. Backlog line has no issue (remote added later) → create it now per `git-flow → Tracker`. Any `failed` row → draft PR, list them in the body.
+Push, create PR/MR (`git-flow` body) with `-m '<III>-<slug>'` and `Closes #<issue>` in the body. Sprint has no issue (remote added later) → create it now per `git-flow → Tracker`. Any `failed` row → draft PR, list them in the body.
 
 ## 6. Verify
 Spawn `verifier` with intent path, sprint path, PR ref. Record verdict + round in `progress.md → Verify`.
 `changes-requested` → spawn responsible implementer(s) with the failed items → gates → push → verify again. Max 2 rounds total; then draft PR.
 
 ## 7. Close
-`progress.md`: `stage: done`, all rounds logged. Backlog line → `done` (or `failed`). Leave the issue open — the human's merge closes it. Report to the human: what the product can now do, in one sentence, plus the PR link. Anything failed, cut, assumed, or proposed → one sentence each, as a user would notice it. Nothing of the kind → the one sentence and the link, nothing else. Two or more verify rounds is such a thing: say the dev agents need tuning.
+`progress.md`: `stage: done`, all rounds logged. Backlog row → `done` (or `failed`). Leave the issue open — the human's merge closes it. Report to the human: what the product can now do, in one sentence, plus the PR link. Anything failed, cut, assumed, or proposed → one sentence each, as a user would notice it. Nothing of the kind → the one sentence and the link, nothing else. Two or more verify rounds is such a thing: say the dev agents need tuning.

@@ -2,14 +2,17 @@
 
 Reference for the agent stack. Agreed 2026-09-14; discussion in `discussion-roadmap.md`.
 
-## Terms
+## Glossary
 
 - **Intent**: one human wish, any roughness ("we need user auth"). Spans 1..n sprints.
-- **Sprint**: one outcome, implemented in one autonomous agentic run.
+- **Task**: the product work to review, build, or change. It may be decomposed into agent-layer work items or subtasks during planning.
+- **Sprint**: one Task, or a coherent group of subtasks that completes it, delivered in one autonomous agentic run.
+- **Backlog**: the list of Sprints/Tasks belonging to one Intent, stored in `backlog.md`.
+- **Outcome**: the true/false statement a PM/PO can verify by using the product or reviewing the merge request in ≤5 min to confirm that the Sprint's Task is complete.
 - **Decision**: fixed by a human. Only a human may change it.
 - **Conclusion**: derived by an agent from decisions. Mutable. Must cite its source (`← D3`) or be marked `ASSUMPTION`.
 - **Human layer**: docs and messages a human reads. Reader = the product owner: knows the product, has not read the code. Best 250 words, max 500.
-- **Tracker**: the GitHub/GitLab side — milestone per intent, issue per backlog line, PR/MR per sprint. A view for humans; `docs/intents/` stays the source of truth.
+- **Tracker**: the GitHub/GitLab side — milestone per Intent, issue per Sprint in the backlog, PR/MR per Sprint. A view for humans; `docs/intents/` stays the source of truth.
 - **Agent layer**: docs between agents. Human never required to read. `research.md` best 500 / max 1000 words, `plan.md` best 250 / max 500.
 
 ## Principles
@@ -33,9 +36,9 @@ docs/intents/001-<slug>/
   research.md                     A  options, landscape, codebase facts
   decisions.md                    H  index D1..Dn, one sentence each
   decisions/Dn-<slug>.md          H  attachment per decision (wireframe, data model, wording). No cap
-  backlog.md                      H  sprint outcomes, one sentence each, dependency-ordered, with issue number
+  backlog.md                      H  table of dependency-ordered Sprints with short Tasks, issue and status
   sprints/01-<slug>/
-    brief.md                      H  outcome, acceptance criteria, ← decisions, assumptions
+    brief.md                      H  Task first, then Outcome, acceptance criteria, ← decisions, assumptions
     research.md                   A  implementation facts, work-item slicing, interfaces
     plan.md                       A  work items, order, deliverable + test per item, interface contracts
     progress.md                   A  sprint state: items done/undone, ≤1-line note each
@@ -63,7 +66,7 @@ Trigger: prompt (`/fhit:intent`, chat) or issue (`/fhit:issue`, same gates via i
 2. **Research** options + codebase → `research.md`. Present options, trade-offs, recommendation — in product terms.
 3. **Roast** — a conversation with the human. Agent asks product-visible questions; designers/architect only supply proposals. Each answer → one sentence in `decisions.md` (+ attachment).
 4. **Approve decisions**: human reviews and refines `decisions.md` → `stage: approved`. Milestone `<III>-<slug>` created, URL into `intent.md`.
-5. **Backlog** (`/fhit:backlog`): propose sprint outcomes + draft briefs → human judges order, cuts, size, gaps → approved. Last gate before the PR. After approval each `open` line gets an issue on the milestone.
+5. **Backlog** (`/fhit:backlog`): write one short Task per Sprint into the `backlog.md` table and draft the complete briefs → human judges Tasks, order, cuts, size, gaps → approved. Last gate before the PR. After approval each `open` row gets an issue on the milestone.
 
 Human reads: intent, research summary, decisions, backlog.
 
@@ -81,7 +84,7 @@ Pre-condition: backlog approved. Zero open human decisions. `/fhit:sprint III` r
 | Verify | separate agent, fresh context | LLM judgement on the PR/MR (see below); approve or request changes |
 
 Main agent keeps `progress.md` current: state + short notes ("done, 3 tests", "sub-agent improvised", "missed goal").
-Mid-sprint discoveries → proposed backlog item, never sprint growth.
+Mid-sprint discoveries → proposed backlog Sprint, never sprint growth.
 Plan/research exceeding its word cap = sprint too big → report, stop.
 
 ### Tests — no test without a reason
@@ -103,7 +106,8 @@ Result posted as review, product owner's language, failures only (approve / requ
 
 ## Sprint definition
 
-- Outcome: one true/false statement verifiable by using the product (or a scoped dev-check) in ≤10 min
+- Task: 1–3 sentences describing what the sprint must build or change and the relevant scope. It is actionable work, not a restatement of the Outcome or an acceptance-criteria list
+- Outcome: follows the glossary definition above
 - Hard: zero open decisions at start; PR independently mergeable
 - Guideline: 1–2 h; vertical slice; reverting the PR removes exactly this feature
 - "build login" = intent. "sign in with email+password, no verification mail" = sprint. "error state on wrong password" = acceptance criterion

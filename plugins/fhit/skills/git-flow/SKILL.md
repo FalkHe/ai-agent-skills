@@ -9,7 +9,7 @@ user-invocable: false
 Detect platform once: `git remote get-url origin` → `github.com` → `gh`; else `glab`.
 
 ## Tracker
-One milestone per intent, one issue per backlog line (= per sprint). Every sprint PR/MR carries the milestone and closes its issue.
+One milestone per intent, one issue per Sprint in the backlog. Every sprint PR/MR carries the milestone and closes its issue.
 
 Milestone title = the intent directory name, `<III>-<slug>` (e.g. `001-user-authentication`). Description = intent title + `docs/intents/<III>-<slug>/`.
 Always look up before creating — the commands are re-run on every `/fhit:backlog`.
@@ -18,7 +18,7 @@ Always look up before creating — the commands are re-run on every `/fhit:backl
 |---|---|---|
 | find | `gh api repos/{owner}/{repo}/milestones --jq '.[]\|select(.title=="<M>").number'` | `glab api "projects/:id/milestones?title=<M>" --jq '.[0].id'` |
 | create | `gh api repos/{owner}/{repo}/milestones -f title='<M>' -f description='<d>'` | `glab api projects/:id/milestones -f title='<M>' -f description='<d>'` |
-| issue | `gh issue create -t "<outcome>" -F <f> -m '<M>'` | `glab issue create -t "<outcome>" --description-file <f> -m '<M>'` |
+| issue | `gh issue create -t "<task title>" -F <f> -m '<M>'` | `glab issue create -t "<task title>" --description-file <f> -m '<M>'` |
 | PR/MR | add `-m '<M>'` to create | add `-m '<M>'` to create |
 
 `<M>` = milestone title; empty `find` result → create. Newer `glab` also has `glab milestone create`; the `api` form above works on every version.
@@ -38,7 +38,7 @@ Push, then:
 
 | | GitHub | GitLab |
 |---|---|---|
-| create | `gh pr create --title "<outcome>" --body-file <f>` | `glab mr create --title "<outcome>" --description "$(cat <f>)"` |
+| create | `gh pr create --title "<task title>" --body-file <f>` | `glab mr create --title "<task title>" --description "$(cat <f>)"` |
 | draft | `gh pr ready --undo` | `glab mr update --draft` |
 | diff | `gh pr diff <n>` | `glab mr diff <n>` |
 | approve | `gh pr review <n> --approve -b "<text>"` | `glab mr approve <n>` + `glab mr note <n> -m "<text>"` |

@@ -22,10 +22,10 @@ Mode `intent`, `slice` or `sprint`, paths to intent/brief/decisions, `docs/archi
 4. Write `research.md` (template): facts, option table, one-line recommendation, open questions — mark each question *product-visible* or *technical*.
 
 ### Slice mode
-Read approved `decisions.md` + `research.md`. Propose sprint outcomes: each one true/false statement a user can verify in ≤10 min, vertical slice, independently mergeable, ~1–2 h, zero open decisions. Dependency-ordered, one sentence each, with the `Dn` it realises. Return the list; do not write files.
+Read approved `decisions.md` + `research.md`. Propose dependency-ordered sprints. For each return: a one-sentence backlog Task a PM/PO can understand and verify; a 1–3 sentence Task for the brief describing the complete work and relevant scope; a separate true/false Outcome; dependencies; and the `Dn` it realises. The backlog Task has no implementation detail and is not a copy of the full brief. The brief Task is actionable product work, not a restatement of the Outcome or a list of acceptance criteria. Every sprint is a vertical slice, independently mergeable, ~1–2 h, with zero open decisions. Return the list; do not write files.
 
 ### Sprint mode
-1. Read `brief.md`, referenced decisions, intent `research.md`, `docs/architecture.md`. Then only code the outcome touches.
+1. Read `brief.md`, referenced decisions, intent `research.md`, `docs/architecture.md`. Treat `## Task` as the work to perform and `## Outcome` plus Acceptance criteria as its success contract. Then only inspect code the Task touches.
 2. Slice into work items: by layer and language, so each maps to one implementer agent and items can run in parallel.
 3. Interfaces: every point where two work items meet. Exact enough that both sides implement independently — route + method + request/response shape; function signature; event name + payload; DTO only when it clarifies a real boundary. Nothing more.
 4. Write `research.md` (template). Over the word cap → write the split proposal instead and return `blocked`.

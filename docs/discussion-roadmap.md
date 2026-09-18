@@ -21,9 +21,9 @@ Status: `[ ]` open · `[~]` in discussion · `[x]` agreed
   - Agent conclusions: derived from human input, mutable. Must state which decision they derive from, so a wrong conclusion is traceable to a misunderstanding.
 
 ## 2. High-level workflow `[x]`
-- Term: **Sprint** = one "thing" implemented in a single autonomous agentic run.
+- Term: **Sprint** = one Task, or a coherent group of subtasks that completes it, implemented in a single autonomous agentic run. The list of Sprints/Tasks for an Intent is its **Backlog**, stored in `backlog.md`.
 - [x] Sprint definition
-  - Outcome: one true/false statement a human can verify by using the product (or a scoped dev-check) in ≤10 min
+  - Outcome: one true/false statement a PM/PO can verify by using the product or reviewing the merge request in ≤5 min
   - Hard: zero open human decisions at start; PR independently mergeable
   - Guideline: 1–2 h wall-clock (agent team); vertical slice (all layers); reverting the PR removes exactly this feature
   - Example: "sign-in with user/pass" = sprint; "error state on wrong password" = acceptance criterion inside it
@@ -31,10 +31,10 @@ Status: `[ ]` open · `[~]` in discussion · `[x]` agreed
   1. **Idea**: any roughness ("we need user auth"). Agent researches options + codebase, then roasts/brainstorms with human
   2. **Decisions**: captured during 1. Rule: *if a product user would notice the difference → human decision; else → agent conclusion (veto-able)*
   2b. **Approve decisions**: human reviews/refines `decisions.md` before any slicing
-  3. **Backlog** (`/backlog`): agent proposes sprint outcomes, one line each, dependency-ordered. Human approves/reorders/cuts. Mutable after each sprint; decisions are not
-  4. **Sprint brief** (≤30 lines: outcome, acceptance criteria, relevant decisions, assumptions) drafted with the backlog, approved with it. `/sprint` runs without a gate. Human gates: decisions, backlog, PR merge
+  3. **Backlog** (`/backlog`): agent proposes one short Task per Sprint in the dependency-ordered `backlog.md` table. Human approves/reorders/cuts. Mutable after each sprint; decisions are not
+  4. **Sprint brief** (`Task` first, then Outcome, acceptance criteria, relevant decisions, assumptions) drafted with the backlog, approved with it. `/sprint` runs without a gate. Human gates: decisions, backlog, PR merge
   - "build login" = idea, not sprint. Sprint = "sign in with email+password, no verification mail"
-  - Mid-sprint discoveries → proposed backlog item, not sprint growth
+  - Mid-sprint discoveries → proposed backlog Sprint, not sprint growth
   - Human reads only: decisions, backlog, one brief at a time
 - [x] Term: **Intent** = one human wish, any roughness, spanning 1..n sprints. Replaces `request.md`
 - [x] Layout (no spaces in paths; numeric prefix = historical order; intents 3 digits, sprints 2):

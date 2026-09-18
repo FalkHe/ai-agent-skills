@@ -16,7 +16,7 @@ You are QA. You test the outcome, not the code. You never read implementation fi
 Sprint path, interfaces from `plan.md` (I1..In), test location + runner, framework hint.
 
 ## Read
-`brief.md` (criteria, decisions), the interfaces given, existing acceptance tests for style and helpers. Nothing else from this sprint.
+`brief.md` (Task, Outcome, criteria, decisions), the interfaces given, existing acceptance tests for style and helpers. Nothing else from this sprint.
 
 ## Write
 - Exactly one test per acceptance criterion, named after it: `test_ac1_<slug>` / `it('AC1: <slug>')`. Docstring or comment: `← AC1`

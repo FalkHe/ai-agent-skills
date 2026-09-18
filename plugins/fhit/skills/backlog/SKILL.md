@@ -1,6 +1,6 @@
 ---
 name: backlog
-description: Slices an intent with approved decisions into sprint outcomes and drafts one brief per sprint. Human approves the backlog (briefs included). Re-run after /refine to update.
+description: Slices an intent with approved decisions into a sprint backlog and drafts one brief per sprint. Human approves the backlog (briefs included). Re-run after /refine to update.
 disable-model-invocation: true
 argument-hint: <intent number>
 ---
@@ -10,21 +10,23 @@ argument-hint: <intent number>
 Pre-condition: `decisions.md` is `stage: approved`. Otherwise stop → `/fhit:intent` or `/fhit:refine`.
 
 ## 1. Slice
-Read `decisions.md`, `research.md`, existing `backlog.md` (keep `done`/`running` lines untouched).
-Spawn `architect` in slice mode: given decisions + research, propose sprint outcomes, dependency-ordered. Test each against the sprint definition:
-- one true/false statement, verifiable by using the product in ≤10 min
+Read `decisions.md`, `research.md`, and an existing `backlog.md` (keep `done`/`running` sprints untouched).
+Spawn `architect` in slice mode: given decisions + research, propose dependency-ordered sprints. Every proposal must contain a one-sentence Task for the backlog table, a Task description for the brief, an Outcome, dependencies, and the `Dn` it realises. Test every proposal against the sprint definition:
+- Outcome satisfies the `workflow` glossary definition
 - zero open decisions; independently mergeable; ~1–2 h; vertical slice
 "Build X" is never an outcome.
 
-## 2. Draft briefs
-For each `open` line: `sprints/NN-<slug>/brief.md` (template). Criteria from the outcome + decisions; `Assumptions` = product-invisible calls you foresee.
+## 2. Draft backlog and briefs
+Write `backlog.md` from its template as a table with `#`, `Task`, `Depends on`, `Issue`, and `Status` columns. Each Task cell is one short sentence describing the Sprint's scope and product value. It must be understandable and verifiable by a PM/PO without code knowledge. Do not put the Outcome, acceptance criteria, decisions, assumptions, or implementation detail in the table.
+
+For every `open` row, write `sprints/NN-<slug>/brief.md` from its template. `## Task` must be the first `##` section. It expands the backlog row's one-sentence Task into the complete 1–3 sentence Task description; the two must agree in scope but need not use identical text. Derive criteria from the Task, Outcome, and decisions; `Assumptions` = product-invisible calls you foresee. Before approval, reject any brief with a missing, empty, or duplicated-as-Outcome Task.
 
 ## 3. Approve
-Show `backlog.md`; briefs available on request. The human judges order, cuts, size (≤10 min to verify by using the product), gaps (every `Dn` covered). Approves / reorders / cuts / merges → backlog and briefs `stage: approved`. This is the last human gate before the PR.
+Show `backlog.md`; briefs available on request. The human judges the Tasks, order, cuts, size, and gaps (every `Dn` covered). Approves / reorders / cuts / merges → backlog and briefs `stage: approved`. This is the last human gate before the PR.
 
 ## 4. Publish to the tracker
-After approval only, per `git-flow → Tracker`: ensure the intent milestone exists (create if `/fhit:intent` skipped it), then one issue per `open` backlog line — title = outcome, body = the brief's outcome + acceptance criteria + brief path, milestone assigned. Write the issue number into the line's `Issue` column.
-Line already carrying an issue → update its title/body instead of creating a second one. `running`/`done` lines untouched. No git remote → skip the whole step, note it.
+After approval only, per `git-flow → Tracker`: ensure the intent milestone exists (create if `/fhit:intent` skipped it), then one issue per `open` backlog row — title = a concise form of its Task, body = the brief's Task + Outcome + Acceptance criteria + brief path, milestone assigned. Write the issue number into the row's `Issue` column.
+Row already carrying an issue → update its title/body instead of creating a second one. `running`/`done` rows untouched. No git remote → skip the whole step, note it.
 
 ## 5. Report
 What the product will be able to do when the backlog is through, in one sentence, plus the milestone link and the next command `/fhit:sprint III` (all) or `/fhit:sprint III 01`.

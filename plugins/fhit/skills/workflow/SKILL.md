@@ -8,10 +8,13 @@ user-invocable: false
 
 Templates: `templates/`.
 
-## Terms
+## Glossary
 
 - **Intent**: one human wish, spans 1..n sprints. `docs/intents/NNN-<slug>/`
-- **Sprint**: one outcome, one autonomous run. `sprints/NN-<slug>/`
+- **Task**: the product work to review, build, or change. A Task may be decomposed into agent-layer work items or subtasks during planning
+- **Sprint**: one Task, or a coherent group of subtasks that completes it, delivered in one autonomous run. `sprints/NN-<slug>/`
+- **Backlog**: the list of Sprints/Tasks belonging to one Intent, stored in `backlog.md`
+- **Outcome**: the true/false statement a PM/PO can verify by using the product or reviewing the merge request in ≤5 min to confirm that the Sprint's Task is complete
 - **Decision** `Dn`: human-fixed. Never change; propose changes to the human
 - **Conclusion**: agent-derived. Cite source (`← D3`) or mark `ASSUMPTION`
 
@@ -54,7 +57,8 @@ Name a failure by what a user would notice ("signing in with a wrong password sh
 5. Interfaces between parallel work items are fixed in `plan.md` before implementation.
 6. `progress.md` is the only sprint state. Update after every work item: status + one sentence.
 7. Mid-sprint discovery → line in `progress.md` under `Backlog proposals`. Never grow the sprint.
-8. Tracker mirror: intent = milestone, backlog line = issue, sprint = PR/MR carrying both. Files stay the source of truth; the tracker is a view for humans. Commands in `git-flow → Tracker`.
+8. Tracker mirror: intent = milestone, backlog Sprint = issue, sprint = PR/MR carrying both. Files stay the source of truth; the tracker is a view for humans. Commands in `git-flow → Tracker`.
+9. `backlog.md` is a short PM/PO overview table: one Task sentence per Sprint plus dependency, issue, and status. `brief.md` is the complete Sprint contract; `## Task` is always its first `##` section.
 
 ## Frontmatter
 

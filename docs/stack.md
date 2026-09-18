@@ -7,7 +7,7 @@ Derived from `workflow.md`. Agreed 2026-09-14. Files: `plugins/fhit/agents/*.md`
 | Skill | Phase | Does |
 |---|---|---|
 | `/fhit:intent <text>` | 1 | Interactive. Creates `docs/intents/NNN-<slug>/`, captures verbatim, research via `architect`, roasts with the human, records decisions → human approves |
-| `/fhit:backlog <intent>` | 1 | Slices approved decisions into sprint outcomes, drafts briefs → human approves (last gate before PR) |
+| `/fhit:backlog <intent>` | 1 | Slices approved decisions into a sprint backlog, drafts briefs → human approves (last gate before PR) |
 | `/fhit:issue <#id>` | 1–2 | Same flow, human in the loop via issue comments (proposals → `approve` / `Dn:` replies). Then backlog + sprints |
 | `/fhit:refine <intent>` | 1/2 | Add/change decisions (+ attachments), re-check backlog for conflicts |
 | `/fhit:sprint <intent> [NN]` | 2 | Autonomous, no questions: research → plan → implement ‖ qa → gates → ship → verify. No NN = all open sprints |

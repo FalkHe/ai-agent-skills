@@ -1,5 +1,20 @@
 # Changelog
 
+## 2026-09-18 - Make Sprint Tasks Explicit
+
+Changed FHIT planning artifacts so agents receive an explicit description of
+the work, rather than having to infer it from an Outcome and acceptance
+criteria.
+
+- Added `Task` as the first section in every sprint brief.
+- Replaced the `Outcome` column in `backlog.md` with a PM/PO-verifiable `Task`
+  column while keeping the compact table structure.
+- Made architect slice mode return a Task and a separate verifiable Outcome.
+- Updated sprint selection, status, refinement, tracker, QA, and verification
+  instructions to consume the new contract consistently.
+- Bumped the plugin version to `0.2.0` so installed copies can receive the
+  changed templates and instructions.
+
 ## 2026-09-17 - Enhance Public README
 
 Reworked the public README from a rough project note into an overview that

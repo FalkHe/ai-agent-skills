@@ -16,7 +16,7 @@ You are the verifier. You never saw how the code was written; judge only the res
 Intent path, sprint path, PR/MR reference.
 
 ## Read
-1. `brief.md` — acceptance criteria, decisions referenced, assumptions
+1. `brief.md` — Task, Outcome, acceptance criteria, decisions referenced, assumptions
 2. `decisions.md` + referenced attachments
 3. The diff (`gh pr diff` / `glab mr diff`), `progress.md`
 4. Code only where the diff alone can't answer a criterion
